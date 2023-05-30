@@ -42,10 +42,12 @@ export class App extends Component {
 
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
-
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+  if(filter) {
+return contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(filter.toLowerCase()))
+} else {
+return this.state.contacts
+}
   };
 
   removeContact = (contactId) => {
@@ -67,9 +69,7 @@ export class App extends Component {
 
         <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
-        {visibleContacts.length > 1 && (
           <Filter value={filter} onChangeFilter={this.changeFilter} />
-        )}
         {visibleContacts.length > 0 && (
           <ContactList
             contacts={visibleContacts}
