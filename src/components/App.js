@@ -42,12 +42,13 @@ export class App extends Component {
 
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
-  if(filter) {
-return contacts.filter((contact) =>
+    if (filter) {
+      return contacts.filter((contact) =>
         contact.name.toLowerCase().includes(filter.toLowerCase()))
-} else {
-return this.state.contacts
-}
+    }
+    else { 
+      return this.state.contacts
+    }
   };
 
   removeContact = (contactId) => {
